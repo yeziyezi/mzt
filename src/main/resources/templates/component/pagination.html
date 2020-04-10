@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav aria-label="Page navigation example" th:fragment="pagination(prev,list,next)">
+    <ul class="pagination">
+        <li class="page-item" th:if="${prev.isExist()}">
+            <a class="page-link" th:href="${prev.getUrl()}">Prev</a>
+        </li>
+        <li class="page-item disabled" th:unless="${prev.isExist()}">
+            <span class="page-link">Prev</span>
+        </li>
+        <th:block th:each="pager,stat:${list}">
+            <li aria-current="page" class="page-item active" th:if="${pager.isCurrent()}">
+                <span class="page-link" th:text="${pager.getNum()}">
+                    pageNum<span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item" th:unless="${pager.isCurrent()}">
+                <a class="page-link" th:href="${pager.getUrl()}" th:text="${pager.getNum()}">3</a>
+            </li>
+        </th:block>
+
+
+        <li class="page-item" th:if="${next.isExist()}">
+            <a class="page-link" th:href="${next.getUrl()}">Next</a>
+        </li>
+        <li class="page-item disabled" th:unless="${next.isExist()}">
+            <span class="page-link">Next</span>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

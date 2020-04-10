@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="component/common-head::head">common-head</th:block>
+    <link href="/static/css/font_1466921_yiexkts3me.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<nav th:replace="component/navbar::navbar(${navBarItems})"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-6  col-md-3 " th:each="cover,stat:${covers}">
+            <div class="card">
+                <a th:href="|/c/${cover.getCollectionEntity().getId()}|">
+                    <img alt="loading..." class="card-img-top" th:src="${cover.getPath()}">
+                </a>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 col-sm-6" style="padding: 0">
+                                <a class="btn btn-block" href="#"
+                                   style="width:100%;height: 100%;padding: 0">
+                                    <i class="iconfont iconliulan" style="font-size: 20px;color: gray;">
+                                        <span th:text="${cover.getCollectionEntity().getViewCount()}"></span>
+                                    </i>
+                                </a>
+                            </div>
+                            <div class="col-6 col-sm-6" style="padding: 0">
+                                <a class="btn btn-block" href="#"
+                                   style="width:100%;height: 100%;padding: 0">
+                                    <i class="iconfont icondianzan" style="font-size: 20px;color: gray">
+                                        <span th:text="${cover.getCollectionEntity().getLikeCount()}"></span>
+                                    </i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav th:replace="component/pagination::pagination(${pagination.getPrev()},${pagination.getList()},${pagination.getNext()})">
+
+</nav>
+</body>
+</html>

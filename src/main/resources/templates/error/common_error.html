@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>错误发生</title>
+</head>
+<body>
+<h1 th:text="${message}">Error</h1>
+<img src="/static/image/error.gif">
+<h4><a th:href="${fromUrl}">点击返回原页面</a></h4>
+</body>
+</html>
