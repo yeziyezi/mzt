@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar(navBarItems)">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
     <a class="navbar-brand" href="#">MadYezi</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
@@ -14,18 +14,6 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <th:block th:each="item,stat:${navBarItems}">
-                <li class="nav-item active" th:if="${item.isCurrent()}">
-                    <a class="nav-link" th:href="${item.getUrl()}" th:text="${item.getLabel()}">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item" th:unless="${item.isCurrent()}">
-                    <a class="nav-link" th:href="${item.getUrl()}" th:text="${item.getLabel()}">Link</a>
-                </li>
-            </th:block>
-        </ul>
         <form class="form-inline my-2 my-lg-0">
             <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
