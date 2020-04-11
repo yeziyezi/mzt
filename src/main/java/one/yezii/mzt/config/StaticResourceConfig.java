@@ -22,6 +22,7 @@ public class StaticResourceConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         boolean prod = Optional.ofNullable(System.getProperty("env")).map(s -> s.equals("prod")).orElse(false);
+        System.out.println(System.getProperty("env"));
         registry.addResourceHandler(mztUrlPrefix + "/**")
                 .addResourceLocations("file:" + (prod ? mztImageBasePathProd : mztImageBasePath) + File.separator)
                 .setCacheControl(CacheControl.maxAge(1, TimeUnit.DAYS).cachePublic());
